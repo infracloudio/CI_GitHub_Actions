@@ -107,4 +107,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: artifact.jar
-        path: github-actions-java-maven/target/github-actions-java-maven.jar
+        path: target/jb-hello-world-maven-0.2.0-shaded.jar
