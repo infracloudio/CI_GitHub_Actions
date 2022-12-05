@@ -81,6 +81,7 @@ jobs:
         java-version: 14
     - name: Build project with Maven
       run: mvn -B package --file pom.xml
+           mkdir staging && cp target/*.jar staging 
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 #    - name: Report Junit Result
@@ -106,4 +107,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: my_artifact
-        path: target/
+        path: staging
