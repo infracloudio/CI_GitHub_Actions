@@ -80,7 +80,8 @@ jobs:
       with:
         java-version: 14
     - name: Build project with Maven
-      run: mvn -B package --file pom.xml
+      run: | 
+           mvn -B package --file pom.xml
            mkdir staging && cp target/*.jar staging 
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
