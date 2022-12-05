@@ -110,7 +110,7 @@ jobs:
       id: check_files
       uses: andstor/file-existence-action@v1
       with:
-        files: "${{ github.workspace }}/target/*.jar"
+        files: "${{ github.workspace }}/target/jb-hello-world-maven-0.2.0-shaded.jar"
 
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
