@@ -79,6 +79,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 14
+    - name: Check working directory
+      run: echo "${GITHUB_WORKSPACE}"
     - name: Build project with Maven
       run: | 
            mvn -B package --file pom.xml
