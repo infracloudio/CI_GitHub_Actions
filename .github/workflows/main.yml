@@ -104,7 +104,7 @@ jobs:
     needs: build_and_test
     steps:
     - name: Upload Maven build artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: artifact.jar
-        path: /home/runner/work/CI_GitHub_Actions/CI_GitHub_Actions/target/jb-hello-world-maven-0.2.0-shaded.jar
+        name: my_artifact
+        path: /home/runner/work/CI_GitHub_Actions/CI_GitHub_Actions/target/
