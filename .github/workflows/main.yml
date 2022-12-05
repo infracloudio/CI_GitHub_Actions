@@ -12,7 +12,9 @@ on:
     branches:
       - main
       - 'feature/**'
- 
+defaults:
+  run:
+    working-directory: CI_GitHub_Actions
 jobs:
   compile:
     runs-on: ubuntu-20.04
@@ -107,4 +109,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: my_artifact
-        path: /home/runner/work/CI_GitHub_Actions/CI_GitHub_Actions/target/
+        path: CI_GitHub_Actions/target/
