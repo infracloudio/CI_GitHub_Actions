@@ -6,7 +6,13 @@
     <artifactId>jb-hello-world-maven</artifactId>
     <packaging>jar</packaging>
     <version>0.2.0</version>
-
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub OWNER Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/infracloudio/CI_GitHub_Actions</url>
+        </repository>
+    </distributionManagement>
     <!-- tag::joda[] -->
      <properties>
            <java.version>1.8</java.version>
