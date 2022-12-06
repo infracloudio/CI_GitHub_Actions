@@ -13,13 +13,6 @@
           <url>https://maven.pkg.github.com/infracloudio/CI_GitHub_Actions</url>
         </repository>
     </distributionManagement>
-    <servers>
-        <server>
-          <id>github</id>
-          <username>shubhadaR</username>
-          <password>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</password>
-        </server>
-    </servers>
     <!-- tag::joda[] -->
      <properties>
            <java.version>1.8</java.version>
@@ -80,4 +73,11 @@
             </plugin>
         </plugins>
     </build>
+    <servers>
+        <server>
+          <id>github</id>
+          <username>shubhadaR</username>
+          <password>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</password>
+        </server>
+    </servers>
 </project>
