@@ -121,7 +121,7 @@ jobs:
         name: Package
         path: staging
     - name: Publish package to Github package
-      run: mvn deploy
+      run: mvn -Pgithub deploy
     #- name: Temporarily save jar artifact
     #  uses: actions/upload-artifact@v2
     #  with:
