@@ -73,11 +73,4 @@
             </plugin>
         </plugins>
     </build>
-    <servers>
-        <server>
-          <id>github</id>
-          <username>shubhadaR</username>
-          <password>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</password>
-        </server>
-    </servers>
 </project>
