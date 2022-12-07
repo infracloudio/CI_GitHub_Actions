@@ -88,7 +88,7 @@ jobs:
       run: echo "${GITHUB_WORKSPACE}"
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml -Pgithub deploy
+           mvn -B package --file pom.xml deploy
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
