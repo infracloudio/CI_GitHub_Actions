@@ -95,8 +95,8 @@ jobs:
 
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
     - name: Deploy to GitHub
-        run: mvn --batch-mode -DuseGitHubPackages=true deploy
-        env:
+      run: mvn --batch-mode -DuseGitHubPackages=true deploy
+      env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
