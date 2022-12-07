@@ -32,7 +32,7 @@
 
       <releases><enabled>true</enabled></releases>
 
-              <snapshots><enabled>true</enabled></snapshots>
+              <snapshots><enabled>false</enabled></snapshots>
 
             </repository>
 
@@ -45,7 +45,7 @@
 
               <snapshots>
 
-                <enabled>true</enabled>
+                <enabled>false</enabled>
 
               </snapshots>
 
