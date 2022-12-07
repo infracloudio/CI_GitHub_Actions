@@ -94,6 +94,10 @@ jobs:
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
 
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
+    - name: Deploy to GitHub
+        run: mvn --batch-mode -DuseGitHubPackages=true deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
     - name: Test Report
@@ -129,13 +133,6 @@ jobs:
       with:
         name: Package
         path: target/*.jar
-    - name: publish artifact to github repo
-      run: mvn deploy
-      env:
-
-          GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
-
-          GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
     #- name: Temporarily save jar artifact
     #  uses: actions/upload-artifact@v2
     #  with:
