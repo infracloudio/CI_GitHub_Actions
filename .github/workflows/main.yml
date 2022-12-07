@@ -88,16 +88,12 @@ jobs:
       run: echo "${GITHUB_WORKSPACE}"
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml 
+           mvn -B package --file pom.xml -Pgithub deploy
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
 
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
-    - name: Deploy to GitHub
-      run: mvn --batch-mode -DuseGitHubPackages=true deploy
-      env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
     - name: Test Report
