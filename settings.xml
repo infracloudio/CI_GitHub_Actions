@@ -39,6 +39,7 @@
             <repository>
 
               <id>github</id>
+              <name>Inception-Maven</name>
 
               <url>https://maven.pkg.github.com/infracloudio/CI_GitHub_Actions</url>
 
