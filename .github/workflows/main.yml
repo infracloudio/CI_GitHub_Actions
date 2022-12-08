@@ -88,7 +88,7 @@ jobs:
       run: echo "${GITHUB_WORKSPACE}"
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml -DattachMuleSources -Pgithub deploy
+           mvn -B package --file pom.xml 
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
@@ -96,6 +96,8 @@ jobs:
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+    - name: publish package
+      run: mvn -Pgithub deploy
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: success() || failure()    # run this step even if previous step failed
@@ -146,7 +148,7 @@ jobs:
     - uses: actions/download-artifact@v1
       with:
           name: package
-          path: target/
+          path: target/*.jar
     - name: Docker build
       run: |
         docker build . -t shubhadainfra/cicd_infracloud:1
