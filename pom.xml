@@ -7,6 +7,12 @@
     <packaging>jar</packaging>
     <version>0.2.0</version>
     <!-- tag::joda[] -->
+    <scm>
+        <connection>scm:svn:http://127.0.0.1/dummy</connection>
+        <developerConnection>scm:svn:https://127.0.0.1/dummy</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://127.0.0.1/dummy</url>
+    </scm>
      <properties>
            <java.version>1.8</java.version>
            <maven.compiler.source>1.7</maven.compiler.source>
