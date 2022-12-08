@@ -88,9 +88,9 @@ jobs:
       run: echo "${GITHUB_WORKSPACE}"
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml 
-           mvn deploy:deploy-file -Dfile=hello-world-maven-0.2.*.jar \
-                                  -Durl=${{github.workspace}}/target/ \
+           mvn -B package --file pom.xml -Pgithub deploy
+          # mvn deploy:deploy-file -Dfile=hello-world-maven-0.2.*.jar \
+           #                       -Durl=${{github.workspace}}/target/ \
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
