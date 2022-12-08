@@ -89,7 +89,7 @@ jobs:
     - name: Build project with Maven
       run: | 
            mvn -B package --file pom.xml 
-           mvn deploy:deploy-file -Dfile=target\hello-world-maven-0.2.${{buildNumber}}.jar \
+           mvn deploy:deploy-file -Dfile=target\hello-world-maven-0.2.*.jar \
                                   -Durl=${{github.workspace}} \
       env:
 
