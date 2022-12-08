@@ -5,7 +5,7 @@
     <groupId>inception</groupId>
     <artifactId>hello-world-maven</artifactId>
     <packaging>jar</packaging>
-    <version>0.2.0</version>
+    <version>0.2</version>
     <!-- tag::joda[] -->
     <scm>
         <connection>scm:svn:http://127.0.0.1/dummy</connection>

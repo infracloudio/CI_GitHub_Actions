@@ -115,7 +115,6 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - run: mvn --batch-mode --update-snapshots verify
-    #- run: mkdir staging && cp target/jb-hello-world-maven-0.2.0.jar staging
     - name: Check file existence
       id: check_files
       uses: andstor/file-existence-action@v1
@@ -129,12 +128,6 @@ jobs:
       with:
         name: Package
         path: target/*.jar
-    #- name: Temporarily save jar artifact
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #    name: jar-artifact
-    #    path: ${{ github.workspace }}/target/*.jar
-    #    retention-days: 1
   
 
   deploy:
