@@ -96,8 +96,12 @@ jobs:
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
-    - name: publish package
-      run: mvn -Pgithub deploy
+    - name: Publish to GitHub Packages Apache Maven
+      run: |
+        echo $PACKAGE_VERSION
+        mvn deploy -s settings.xml
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: success() || failure()    # run this step even if previous step failed

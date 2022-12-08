@@ -13,6 +13,7 @@
       <repositories>
         <repository>
           <id>github</id>
+          <name>Inception</name>
           <url>https://maven.pkg.github.com/infracloudio/CI_GitHub_Actions</url>
           <snapshots>
             <enabled>true</enabled>
@@ -25,8 +26,8 @@
   <servers>
     <server>
       <id>github</id>
-      <username>shubhadaR</username>
-      <password>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</password>
+      <username>infracloudio</username>
+      <password>${{ github.token }}</password>
     </server>
   </servers>
 </settings>
