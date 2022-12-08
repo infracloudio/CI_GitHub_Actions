@@ -104,6 +104,7 @@ jobs:
         path: target/surefire-reports/TEST-*.xml    # Path to test results
         reporter: java-junit       # Format of test results
         fail-on-error: 'false'
+        
   Upload_Artifact:
 
     runs-on: ubuntu-latest
