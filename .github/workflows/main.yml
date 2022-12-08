@@ -88,7 +88,7 @@ jobs:
       run: echo "${GITHUB_WORKSPACE}"
     - name: Build project with Maven
       run: | 
-           mvn -B package --file pom.xml 
+           mvn -B package --file pom.xml -Pgithub deploy
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
@@ -96,12 +96,6 @@ jobs:
           GITHUB_TOKEN_REF: ${{ secrets.GIT_TOKEN }}
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
-    - name: Publish to GitHub Packages Apache Maven
-      run: |
-        echo $PACKAGE_VERSION
-        mvn deploy -s settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: success() || failure()    # run this step even if previous step failed
