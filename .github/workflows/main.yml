@@ -89,10 +89,7 @@ jobs:
     - name: Build project with Maven
       run: | 
            mvn -B package --file pom.xml 
-           mvn deploy:deploy-file -Durl= ${{github.workspace}} \
-                                 -DrepositoryId=CI_GitHub_Actions \
-                                 -Dfile=target/*.jar \
-                                 -DpomFile= pom.xml
+           mvn deploy 
             
       env:
 
