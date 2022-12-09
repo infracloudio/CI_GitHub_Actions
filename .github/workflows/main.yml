@@ -102,8 +102,7 @@ jobs:
       run: | 
            mvn -B package --file pom.xml 
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false
-           mvn deploy 
-           mvn install  
+           mvn deploy  
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
@@ -156,6 +155,12 @@ jobs:
  #     with:
  #         name: package
  #         path: target/*.jar
+    - name: 'Create settings.xml'
+      uses: whelk-io/maven-settings-xml-action@v4
+      with:
+        servers: '[{"id": "github", "username": "${{ secrets.GIT_USERNAME }}", "password": "${{ secrets.GIT_TOKEN }}"}]'
+    - name: Build
+      run: mvn install 
     - name: Docker build
       run: |
         docker build . -t shubhadainfra/cicd_infracloud:1
