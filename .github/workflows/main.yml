@@ -91,7 +91,7 @@ jobs:
            mvn -B package --file pom.xml 
            mvn deploy:deploy-file -Durl= ${{github.workspace}} \
                                  -DrepositoryId=CI_GitHub_Actions \
-                                 -Dfile=target/hello-world-maven-0.2.*.jar \
+                                 -Dfile=target/*.jar \
                                  -DpomFile= pom.xml
             
       env:
