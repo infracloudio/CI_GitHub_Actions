@@ -122,6 +122,7 @@ jobs:
     - name: Read output variables
       run: |
          echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
+         
     - uses: LouisBrunner/checks-action@v1.1.1
       if: always()
       with:
