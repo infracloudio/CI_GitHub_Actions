@@ -6,7 +6,6 @@
     <artifactId>hello-world-maven</artifactId>
     <packaging>jar</packaging>
     <version>0.2</version>
-    <name>${project.artifactId}-${project.version}.${buildNumber}</name>
     <!-- tag::joda[] -->
     <scm>
         <connection>scm:svn:http://127.0.0.1/dummy</connection>
@@ -106,6 +105,5 @@
                 </configuration>
             </plugin>    
         </plugins>
-        <finalName>${project.artifactId}-${project.version}.${buildNumber}</finalName>
     </build>
 </project>
