@@ -103,7 +103,7 @@ jobs:
            mvn -B package --file pom.xml 
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false
            mvn deploy 
-            
+           mvn install  
       env:
 
           GITHUB_USER_REF: ${{ secrets.GIT_USERNAME }}
@@ -156,8 +156,6 @@ jobs:
  #     with:
  #         name: package
  #         path: target/*.jar
-    - name: installation of mvn package
-      run: mvn install 
     - name: Docker build
       run: |
         docker build . -t shubhadainfra/cicd_infracloud:1
