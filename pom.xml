@@ -46,7 +46,11 @@
                <version>4.13.1</version>
                <scope>test</scope>
            </dependency>
-
+           <dependency>
+                <groupId>inception</groupId>
+                <artifactId>hello-world-maven</artifactId>
+                <version>0.2.3</version>
+           </dependency>
        </dependencies>
        <!-- end::joda[] -->
        
