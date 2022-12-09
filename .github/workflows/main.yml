@@ -122,6 +122,14 @@ jobs:
     - name: Read output variables
       run: |
          echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
+    - uses: LouisBrunner/checks-action@v1.1.1
+      if: always()
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Test XYZ
+        conclusion: ${{ job.status }}
+        output: |
+          {"summary":${{ steps.test-report.outputs.conclusion }} ${{ steps.test-report.outputs.passed }} }
 
   Upload_Artifact:
 
