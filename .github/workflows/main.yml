@@ -89,6 +89,7 @@ jobs:
     - name: Build project with Maven
       run: | 
            mvn -B package --file pom.xml 
+           mvn -B versions:set -DnewVersion=${{ github.event.push.tag_name }} -DgenerateBackupPoms=false
            mvn deploy 
             
       env:
