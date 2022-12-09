@@ -155,12 +155,12 @@ jobs:
  #     with:
  #         name: package
  #         path: target/*.jar
-    - name: 'Create settings.xml'
-      uses: whelk-io/maven-settings-xml-action@v4
-      with:
-        servers: '[{"id": "github", "username": "${{ secrets.GIT_USERNAME }}", "password": "${{ secrets.GIT_TOKEN }}"}]'
-    - name: Build
-      run: mvn install 
+ #   - name: 'Create settings.xml'
+ #     uses: whelk-io/maven-settings-xml-action@v4
+ #     with:
+ #       servers: '[{"id": "github", "username": "${{ secrets.GIT_USERNAME }}", "password": "${{ secrets.GIT_TOKEN }}"}]'
+ #   - name: Build
+ #     run: mvn install 
     - name: Docker build
       run: |
         docker build . -t shubhadainfra/cicd_infracloud:1
