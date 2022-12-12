@@ -160,7 +160,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: Upload_Artifact
+    needs: build_and_test
 
     steps:
     - uses: actions/checkout@v2
@@ -174,8 +174,8 @@ jobs:
   #      servers: '[{"id": "github", "password": "${{ secrets.GIT_TOKEN }}"}]'
     - name: Build
       run: |
-         mvn dependency:get -DgroupId=inception -DartifactId=hello-world-maven -Dversion=0.2.18 -Dpackaging=jar -DremoteRepositories=https://github.com/infracloudio/CI_GitHub_Actions/ 
-         mvn install 
+         mvn dependency:get -DgroupId=inception -DartifactId=hello-world-maven -Dversion=0.2.${{needs.build_and_test.outputs.build_number}} -Dpackaging=jar -DremoteRepositories=https://github.com/infracloudio/CI_GitHub_Actions
+       
     - name: Fetch action
       id: pl
       uses: Rishabh510/Path-lister-action@master
