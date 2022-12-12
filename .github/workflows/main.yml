@@ -130,7 +130,7 @@ jobs:
         name: Test XYZ
         conclusion: ${{ job.status }}
         output: |
-          {"summary":"${{ steps.test-report.outputs.conclusion }}"," passed: ${{ steps.test-report.outputs.passed }}"}
+          {"summary":"${{ steps.test-report.outputs.conclusion }}"}
 
   Upload_Artifact:
 
