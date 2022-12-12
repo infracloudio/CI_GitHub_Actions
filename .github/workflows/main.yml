@@ -123,14 +123,14 @@ jobs:
       run: |
          echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
 
-    - uses: LouisBrunner/checks-action@v1.1.1
-      if: always()
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: Test XYZ
-        conclusion: ${{ job.status }}
-        output: |
-          {"summary":"${{ steps.test-report.outputs.conclusion }}"}
+ #   - uses: LouisBrunner/checks-action@v1.1.1
+ #     if: always()
+ #     with:
+ #       token: ${{ secrets.GITHUB_TOKEN }}
+ #       name: Test XYZ
+ #       conclusion: ${{ job.status }}
+ #       output: |
+ #         {"summary":"${{ steps.test-report.outputs.conclusion }}"}
 
   Upload_Artifact:
 
@@ -168,12 +168,13 @@ jobs:
  #     with:
  #         name: package
  #         path: target/*.jar
-    - name: 'Create settings.xml'
-      uses: whelk-io/maven-settings-xml-action@v4
-      with:
-        servers: '[{"id": "github", "password": "${{ secrets.GIT_TOKEN }}"}]'
+  #  - name: 'Create settings.xml'
+  #    uses: whelk-io/maven-settings-xml-action@v4
+  #    with:
+  #      servers: '[{"id": "github", "password": "${{ secrets.GIT_TOKEN }}"}]'
     - name: Build
       run: |
+         mvn dependency:get -DgroupId=inception -DartifactId=hello-world-maven -Dversion=0.2.18 -Dpackaging=jar -DremoteRepositories=https://github.com/infracloudio/CI_GitHub_Actions/ 
          mvn install 
     - name: Fetch action
       id: pl
