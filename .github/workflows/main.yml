@@ -172,23 +172,10 @@ jobs:
   #    uses: whelk-io/maven-settings-xml-action@v4
   #    with:
   #      servers: '[{"id": "github", "password": "${{ secrets.GIT_TOKEN }}"}]'
-    - name: Build
-      run: |
-         mvn dependency:get -DgroupId=inception -DartifactId=hello-world-maven -Dversion=0.2.22 -Dpackaging=jar -DremoteRepositories=https://github.com/infracloudio/CI_GitHub_Actions
-       
-    - name: Fetch action
-      id: pl
-      uses: Rishabh510/Path-lister-action@master
-      with:
-        path: ".m2/repository/inception/"
-        type: ".jar"
-
-    - name: Output results
-      run: |
-        echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
-        for i in ${{ steps.pl.outputs.paths }}; do
-        echo $i
-        done
+ #   - name: Build
+ #     run: |
+ #         mvn dependency:get -DgroupId=inception -DartifactId=hello-world-maven -Dversion=0.2.22 -Dpackaging=jar -DremoteRepositories=https://github.com/infracloudio/CI_GitHub_Actions
+ #         mvn install 
     - name: Docker build
       run: |
         docker build . -t shubhadainfra/cicd_infracloud:1
