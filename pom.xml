@@ -2,12 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.springframework</groupId>
-    <artifactId>jb-hello-world-maven</artifactId>
+    <groupId>inception</groupId>
+    <artifactId>hello-world-maven</artifactId>
     <packaging>jar</packaging>
-    <version>0.2.0</version>
-
+    <version>0.2</version>
     <!-- tag::joda[] -->
+    <scm>
+        <connection>scm:svn:http://127.0.0.1/dummy</connection>
+        <developerConnection>scm:svn:https://127.0.0.1/dummy</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://127.0.0.1/dummy</url>
+    </scm>
      <properties>
            <java.version>1.8</java.version>
            <maven.compiler.source>1.7</maven.compiler.source>
@@ -16,7 +21,18 @@
            <junit.vintage.version>5.2.0</junit.vintage.version>
            <junit.platform.version>1.2.0</junit.platform.version>
      </properties>
-
+    <distributionManagement>
+            <repository>
+              <id>github</id>
+              <name>inception</name>
+              <url>https://maven.pkg.github.com/infracloudio/CI_GitHub_Actions</url>
+            </repository>
+     </distributionManagement>
+    <profiles>
+        <profile>
+            <id>github</id>
+        </profile>
+    </profiles>
       <dependencies>
            <dependency>
                <groupId>joda-time</groupId>
@@ -30,7 +46,6 @@
                <version>4.13.1</version>
                <scope>test</scope>
            </dependency>
-
        </dependencies>
        <!-- end::joda[] -->
        
@@ -65,6 +80,29 @@
                      <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                  <execution>
+                    <id>buildnumber</id>
+                    <phase>validate</phase>
+                    <goals>
+                      <goal>create</goal>
+                    </goals>
+                  </execution>
+                </executions>
+                <configuration>
+                  <format>{0,number}</format>
+                  <items>
+                    <item>buildNumber</item>
+                  </items>                    
+                  <doCheck>false</doCheck>
+                  <doUpdate>false</doUpdate>
+                  <revisionOnScmFailure>unknownbuild</revisionOnScmFailure>   
+                </configuration>
+            </plugin>    
         </plugins>
     </build>
 </project>
