@@ -169,6 +169,7 @@ jobs:
  #     run: |
  #         mvn dependency:get -DgroupId=inception -DartifactId=hello-world-maven -Dversion=0.2.22 -Dpackaging=jar -DremoteRepositories=https://github.com/infracloudio/CI_GitHub_Actions
  #         mvn install 
+ 
     - name: Docker build
       run: |
         docker build --build-arg FOO=${{ steps.build_and_test.outputs.build_number }} . -t shubhadainfra/cicd_infracloud:1 
