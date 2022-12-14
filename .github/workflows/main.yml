@@ -101,6 +101,7 @@ jobs:
     - name: Build project with Maven
       run: | 
            mvn -B package --file pom.xml 
+           mkdir staging
            cp target/*.jar staging
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false
            mvn deploy  
