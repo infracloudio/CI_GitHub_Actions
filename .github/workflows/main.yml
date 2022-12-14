@@ -154,14 +154,14 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build_and_test
+    needs: Upload_Artifact
 
     steps:
     - uses: actions/checkout@v2
-#    - uses: actions/download-artifact@v1
-#      with:
-#          name: Package
-#          path: /staging
+    - uses: actions/download-artifact@v1
+      with:
+          name: Package
+          path: staging
  #   - name: 'Create settings.xml'
  #     uses: whelk-io/maven-settings-xml-action@v4
  #     with:
@@ -173,7 +173,7 @@ jobs:
 
     - name: Docker build
       run: |
-        docker build --build-arg FOO=${{ steps.build_and_test.outputs.build_number }} . -t shubhadainfra/cicd_infracloud:1 
+        docker build . -t shubhadainfra/cicd_infracloud:1 
     - uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
