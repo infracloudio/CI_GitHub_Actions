@@ -178,7 +178,7 @@ jobs:
  #         mvn install 
     - name: Docker build
       run: |
-        docker build . -t shubhadainfra/cicd_infracloud:1
+        docker build . -t shubhadainfra/cicd_infracloud:1 --build-arg version=${{ steps.build_and_test.outputs.build_number }}
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
