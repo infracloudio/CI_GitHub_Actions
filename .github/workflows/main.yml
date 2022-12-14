@@ -101,8 +101,6 @@ jobs:
     - name: Build project with Maven
       run: | 
            mvn -B package --file pom.xml 
-           mkdir staging
-           cp target/hello-world-maven-0.2.jar staging
            mvn -B versions:set -DnewVersion=${{ steps.project.outputs.version }}.${{ steps.buildnumber.outputs.build_number }} -DgenerateBackupPoms=false
            mvn deploy  
       env:
@@ -135,7 +133,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - run: mvn --batch-mode --update-snapshots verify
+    - run: |
+         mvn --batch-mode --update-snapshots verify
+         mkdir staging
+         cp target/hello-world-maven-0.2.jar staging
     - name: Check file existence
       id: check_files
       uses: andstor/file-existence-action@v1
@@ -169,7 +170,7 @@ jobs:
  #     run: |
  #         mvn dependency:get -DgroupId=inception -DartifactId=hello-world-maven -Dversion=0.2.22 -Dpackaging=jar -DremoteRepositories=https://github.com/infracloudio/CI_GitHub_Actions
  #         mvn install 
- 
+
     - name: Docker build
       run: |
         docker build --build-arg FOO=${{ steps.build_and_test.outputs.build_number }} . -t shubhadainfra/cicd_infracloud:1 
