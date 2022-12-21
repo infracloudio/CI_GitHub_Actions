@@ -136,12 +136,13 @@ jobs:
     - run: |
          mvn --batch-mode --update-snapshots verify
          mkdir staging
-         cp target/hello-world-maven-0.2.jar staging
-    - name: Check file existence
-      id: check_files
-      uses: andstor/file-existence-action@v1
-      with:
-        files: staging/hello-world-maven-0.2.jar
+        # cp target/hello-world-maven-0.2.jar staging
+         cp target/*.jar staging
+  #  - name: Check file existence
+  #    id: check_files
+  #    uses: andstor/file-existence-action@v1
+  #    with:
+  #      files: staging/hello-world-maven-0.2.jar
 
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
@@ -157,11 +158,11 @@ jobs:
     needs: Upload_Artifact
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/download-artifact@v1
-      with:
-          name: Package
-          path: staging
+#    - uses: actions/checkout@v2
+#    - uses: actions/download-artifact@v1
+#      with:
+#          name: Package
+#          path: staging
  #   - name: 'Create settings.xml'
  #     uses: whelk-io/maven-settings-xml-action@v4
  #     with:
