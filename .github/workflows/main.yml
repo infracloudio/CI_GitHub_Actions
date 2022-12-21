@@ -153,8 +153,13 @@ jobs:
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: 'docker.io/infracloudinception/cicd_inception:1'
-        format: 'table'
-        exit-code: '1'
+        format: 'template'
+        output: 'trivy-results.sarif'
+#        exit-code: '1'
         ignore-unfixed: true
         vuln-type: 'os,library'
         severity: 'CRITICAL,HIGH'
+    - name: Upload trivy scan results to github security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
