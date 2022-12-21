@@ -136,7 +136,7 @@ jobs:
     - run: |
          mvn --batch-mode --update-snapshots verify
          mkdir staging
-         cp target/*.jar staging
+  #       cp target/*.jar staging
   #  - name: Check file existence
   #    id: check_files
   #    uses: andstor/file-existence-action@v1
@@ -149,7 +149,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: Package
-        path: staging/*.jar
+        path: target/*.jar
   
 
   deploy:
@@ -158,10 +158,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-#    - uses: actions/download-artifact@v1
-#      with:
-#          name: Package
-#          path: staging
+    - uses: actions/download-artifact@v1
+      with:
+          name: Package
+          path: staging
  #   - name: 'Create settings.xml'
  #     uses: whelk-io/maven-settings-xml-action@v4
  #     with:
