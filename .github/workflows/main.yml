@@ -154,9 +154,9 @@ jobs:
       with:
         image-ref: 'docker.io/infracloudinception/cicd_inception:1'
         format: 'template'
-        output: 'trivy-results.sarif'
 #        exit-code: '1'
         ignore-unfixed: true
+        output: 'trivy-results.sarif'
         vuln-type: 'os,library'
         severity: 'CRITICAL,HIGH'
     - name: Upload trivy scan results to github security tab
