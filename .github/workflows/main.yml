@@ -136,12 +136,12 @@ jobs:
     - run: |
          mvn --batch-mode --update-snapshots verify
          mkdir staging
-         cp target/hello-world-maven-0.2.jar staging
-    - name: Check file existence
-      id: check_files
-      uses: andstor/file-existence-action@v1
-      with:
-        files: staging/hello-world-maven-0.2.jar
+  #       cp target/*.jar staging
+  #  - name: Check file existence
+  #    id: check_files
+  #    uses: andstor/file-existence-action@v1
+  #    with:
+  #      files: staging/hello-world-maven-0.2.jar
 
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
@@ -149,7 +149,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: Package
-        path: staging/*.jar
+        path: target/*.jar
   
 
   deploy:
@@ -175,9 +175,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN_INCEPTION }}
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
     - name: Build and Push docker image
       uses: docker/build-push-action@v3
       with: 
         context: .
+        file: Dockerfile
         push: true
         tags: infracloudinception/cicd_inception:1
