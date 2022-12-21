@@ -122,6 +122,11 @@ jobs:
     - name: Read output variables
       run: |
          echo "url is ${{ steps.test-report.outputs.runHtmlUrl }}"
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        junit_files: "target/surefire-reports/TEST-*.xml"
 
   Upload_Artifact:
 
