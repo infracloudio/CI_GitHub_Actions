@@ -136,7 +136,6 @@ jobs:
     - run: |
          mvn --batch-mode --update-snapshots verify
          mkdir staging
-        # cp target/hello-world-maven-0.2.jar staging
          cp target/*.jar staging
   #  - name: Check file existence
   #    id: check_files
